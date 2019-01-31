@@ -6,16 +6,8 @@
 # Useful, as github does not allow use of the same deploy key for
 # multiple projects.
 
-
-# Get the name of the repository
-if [ $# -eq 0 ]
-  then
-    echo "Enter the name of the repository:"
-    echo "(git@github.com:<name of the repository>)"
-    read reponame
-else
-    reponame="$1"
-fi
+# Set the repository name to that of the containing directory
+reponame=${PWD##*/}
 
 # Set the key file name
 keyfile=~/.ssh/id_$reponame
@@ -60,6 +52,9 @@ echo
 echo "$sshconfig:"
 cat $sshconfig
 
+# Update git remote host name
+git remote rm origin
+git remote add origin git@$reponame:nualartlee/$reponame.git
 
 # Print the public key for easy reference
 echo
