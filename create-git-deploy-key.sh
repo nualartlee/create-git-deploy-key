@@ -6,9 +6,6 @@
 # Useful, as github does not allow use of the same deploy key for
 # multiple projects.
 
-# Set the current directory to the caller's
-
-
 # Set the repository name to that of the containing directory
 reponame=${PWD##*/}
 
